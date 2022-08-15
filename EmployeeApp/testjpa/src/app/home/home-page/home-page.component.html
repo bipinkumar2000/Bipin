@@ -3,7 +3,7 @@
     <h2 class="header">
         <p>Welcome to Employee Management System</p>
     </h2>
-    <button class="addEmployee" routerlink="/addEmployee" >add</button>
+    <button class="addEmployee" (click)="addEmployee()">add</button>
 
     <div class="container" >
         <div class="badge" *ngFor="let employee of EmployeeList">

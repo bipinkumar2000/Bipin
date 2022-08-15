@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
-import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { Router, Routes } from '@angular/router';
+import { AddEmployeeComponent } from './home-page/add-employee/add-employee.component';
+import { Routes } from '@angular/router';
 
 
 
 const routes:Routes=[
-  // {path:'/addEmployee' children:[AddEmployeeComponent]}
+  {path:'addEmployee',component:AddEmployeeComponent}
 ]
 
 @NgModule({

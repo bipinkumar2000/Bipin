@@ -28,6 +28,7 @@ export class HomePageComponent implements OnInit {
   }
 
   addEmployee(){
-     this.router.navigateByUrl("/addEmployee");
+    console.log("welcome to add Employee function");
+     this.router.navigateByUrl("addEmployee");
   }
 }
