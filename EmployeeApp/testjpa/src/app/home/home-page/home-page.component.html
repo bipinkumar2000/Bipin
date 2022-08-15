@@ -1,0 +1,16 @@
+<div class="main">
+
+    <h2 class="header">
+        <p>Welcome to Employee Management System</p>
+    </h2>
+    <button class="addEmployee" routerlink="/addEmployee" >add</button>
+
+    <div class="container" >
+        <div class="badge" *ngFor="let employee of EmployeeList">
+           <h3>{{employee.name}}</h3>           
+           <span> salary</span>
+           <span>{{employee.salary}}</span>
+        </div>
+    </div>
+
+</div>

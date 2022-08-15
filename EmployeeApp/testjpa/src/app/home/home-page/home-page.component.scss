@@ -1,0 +1,56 @@
+.main {
+  margin: 0;
+  padding: 0;
+  height: device-width;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.836);
+}
+h3 {
+  text-align: center;
+  font-family: "Courier New", Courier, monospace;
+}
+.block,
+.badge {
+  background: rgba(219, 217, 217, 0.836);
+  color: rgb(10, 5, 5);
+  height: 200px;
+  width: 500px;
+  border: 0.5px solid rgb(67, 67, 161);
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px;
+  margin-left: 60px;
+}
+.badge:hover {
+  border: 0.5px solid rgb(184, 44, 44);
+  width: 505px;
+}
+.container {
+  height: max-content;
+  width: 100%;
+  padding: 10px;
+  display: flex;
+}
+.header {
+  padding-top: 5px;
+  text-align: center;
+  color: rgb(0, 75, 145);
+  font-family: "Courier New", Courier, monospace;
+}
+.block {
+  display: block;
+}
+.addEmployee {
+  margin-right: 75%;
+  height: 30px;
+  width: 100px;
+  border: 2px solid rgb(139, 221, 15);
+  border-radius: 2px;
+}
+.addEmployee:hover {
+  width: 108px;
+  color: rgb(172, 0, 0);
+  background: rgba(235, 224, 224, 0.877);
+  border: 2px solid rgb(139, 221, 15);
+  border-radius: 2px;
+}
