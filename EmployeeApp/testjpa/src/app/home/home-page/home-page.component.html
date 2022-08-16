@@ -18,13 +18,11 @@
 
 <ng-template #content let-modal>
     <div class="body">
-    <form name="form" id="form">
         <label><span>Name</span></label>
-        <input id="name" FormControlName="Name" value="Name" [ngClass]="Employee.name"><br><br>
+        <input id="name" type="text"  [(ngModel)]="Employee.name"><br><br>
         <label><span>Salary</span></label>
-        <input id="salary" formControlName="Salary" value="Salary" [ngClass]="Employee.salary"><br><br>
+        <input id="salary" type="text" [(ngModel)]="Employee.salary"><br><br>
         <button id="submit" class="submit" (click)="addEmployee()" >Add</button>
-        <button id="close" class="close" >close</button>
-    </form>
+        <button id="close" class="close" (click)="close()">close</button>
     </div>
 </ng-template>
