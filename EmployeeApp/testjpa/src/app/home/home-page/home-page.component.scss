@@ -48,9 +48,52 @@ h3 {
   border-radius: 2px;
 }
 .addEmployee:hover {
-  width: 108px;
   color: rgb(172, 0, 0);
-  background: rgba(235, 224, 224, 0.877);
+  background: rgba(255, 255, 255, 0.877);
+  border: 2px solid rgb(15, 53, 221);
+  border-radius: 2px;
+  box-shadow: 10px;
+}
+label{
+  margin:20px;
+  padding:8px;
+
+}
+input{
+  margin:20px;
+  padding:8px;
+}
+input:focus{
+  outline:3px solid rgb(241, 227, 227);
+  border:2px solid rgb(40, 185, 4);
+  border-radius:2px;   
+}
+.submit{
+  margin-left:150px;
+  padding:3px;
   border: 2px solid rgb(139, 221, 15);
   border-radius: 2px;
+}
+.submit:hover{
+  color: rgb(172, 0, 0);
+  background: rgba(255, 255, 255, 0.877);
+  border: 2px solid rgb(15, 53, 221);
+  border-radius: 2px;
+  box-shadow: 10px;
+}
+.close{
+  margin-left:5px;
+  padding:3px;
+  border: 2px solid rgb(139, 221, 15);
+  border-radius: 2px;
+}
+.close:hover{
+  color: rgb(172, 0, 0);
+  background: rgba(255, 255, 255, 0.877);
+  border: 2px solid rgb(15, 53, 221);
+  border-radius: 2px;
+  box-shadow: 10px;
+}
+.body{
+  margin:10px;
 }

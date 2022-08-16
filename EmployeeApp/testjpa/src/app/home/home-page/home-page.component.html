@@ -1,8 +1,10 @@
+
+
 <div class="main">
     <h2 class="header">
         <p>Welcome to Employee Management System</p>
     </h2>
-    <button class="addEmployee" (click)="addEmployee()">add</button>
+    <button class="addEmployee"  (click)="open(content)">Add</button>
 
     <div class="container" >
         <div class="badge" *ngFor="let employee of EmployeeList">
@@ -13,3 +15,16 @@
     </div>
 
 </div>
+
+<ng-template #content let-modal>
+    <div class="body">
+    <form class="form">
+        <label><span>Name</span></label>
+        <input id="Name" FormControl="Name" value="Name"><br><br>
+        <label><span>Salary</span></label>
+        <input id="Salary" FormControl="Salary" value="Salary"><br><br>
+        <button id="submit" class="submit" >Add</button>
+        <button id="close" class="close" >close</button>
+    </form>
+    </div>
+</ng-template>

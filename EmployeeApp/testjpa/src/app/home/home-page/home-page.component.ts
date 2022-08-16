@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeServiceService } from '../home-service.service';
 import { Employee } from 'src/app/Models/Employee';
 import { Router } from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home-page',
@@ -11,8 +12,9 @@ import { Router } from '@angular/router';
 export class HomePageComponent implements OnInit {
 
   EmployeeList:Employee[]=[];
+  closeResult = '';
 
-  constructor(private homeservice:HomeServiceService,private router:Router) { }
+  constructor(private homeservice:HomeServiceService,private router:Router,private modalService: NgbModal) { }
 
   ngOnInit(): void {
 
@@ -30,5 +32,11 @@ export class HomePageComponent implements OnInit {
   addEmployee(){
     console.log("welcome to add Employee function");
      this.router.navigateByUrl("addEmployee");
+  }
+
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    });
   }
 }
