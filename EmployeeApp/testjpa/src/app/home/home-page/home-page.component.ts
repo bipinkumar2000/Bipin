@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeServiceService } from '../home-service.service';
 import { Employee } from 'src/app/Models/Employee';
-import { Router } from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-home-page',
@@ -13,8 +13,9 @@ export class HomePageComponent implements OnInit {
 
   EmployeeList:Employee[]=[];
   closeResult = '';
+  Employee:Employee=new Employee();
 
-  constructor(private homeservice:HomeServiceService,private router:Router,private modalService: NgbModal) { }
+  constructor(private homeservice:HomeServiceService,private modalService: NgbModal) { }
 
   ngOnInit(): void {
 
@@ -30,8 +31,11 @@ export class HomePageComponent implements OnInit {
   }
 
   addEmployee(){
-    console.log("welcome to add Employee function");
-     this.router.navigateByUrl("addEmployee");
+    this.homeservice.postEmployeeData(this.Employee).subscribe(data=>{
+      console.log(data);
+      alert("succcessfully added Employee");
+    });
+     
   }
 
   open(content) {
