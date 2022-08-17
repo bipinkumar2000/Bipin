@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,8 +26,8 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 
 	@PostMapping("")
-	public void addEmployee(@RequestBody Employee employee) {
-		employeeService.addEmployee(employee);
+	public ResponseEntity<Boolean> addEmployee(@RequestBody Employee employee) {
+		return employeeService.addEmployee(employee);
 	}
 	@GetMapping("")
 	public ResponseEntity<List<Employee>> getEmployees() {
@@ -34,7 +35,12 @@ public class EmployeeController {
 		return ResponseEntity.ok(value);
 	}
 	@GetMapping("/{id}")
-	public Optional<Employee> getEmployee(@PathVariable("id") long id) {
+	public ResponseEntity<Optional<Employee>> getEmployee(@PathVariable("id") long id) {
 		return employeeService.getEmployee(id);
+	}
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Boolean> deleteEmployee(@PathVariable("id") long id) {
+		return employeeService.deleteEmployee(id);
+			  
 	}
 }
