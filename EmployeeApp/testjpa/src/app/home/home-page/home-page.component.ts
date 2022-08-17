@@ -3,6 +3,7 @@ import { HomeServiceService } from '../home-service.service';
 import { Employee } from 'src/app/Models/Employee';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -15,7 +16,10 @@ export class HomePageComponent implements OnInit {
   EmployeeList:Employee[]=[];
   closeResult = '';
   Employee:Employee=new Employee();
-  name:string;
+
+  displayedColumns: string[] = ['name','salary','action'];
+
+  EmployeedataSource:MatTableDataSource<any>= new MatTableDataSource<any>();
 
   constructor(private homeservice:HomeServiceService,private modalService: NgbModal) { }
 
@@ -28,6 +32,7 @@ export class HomePageComponent implements OnInit {
   getEmployeesData(){
     this.homeservice.getEmployeesData().subscribe(data=>{
       console.log(data);
+      this.EmployeedataSource=new MatTableDataSource<any>(data);
       this.EmployeeList=data;
     })
   }

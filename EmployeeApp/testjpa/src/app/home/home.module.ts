@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './home-page/home-page.component';
 import { Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -15,7 +16,8 @@ const routes:Routes=[
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MatTableModule
   ],
   exports:[
     HomePageComponent,
