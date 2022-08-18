@@ -17,7 +17,10 @@ export class HomeServiceService {
     return this.http.get<any>(this.URL);
   }
   
-  public postEmployeeData(Employee:Employee):Observable<any>{
-    return this.http.post<any>(this.URL,Employee);
+  public postEmployeeData(Employee:Employee):Observable<boolean>{
+    return this.http.post<boolean>(this.URL,Employee);
+  }
+  public deleteEmployeeData(id:number):Observable<boolean>{
+    return this.http.delete<boolean>(this.URL+'/'+id+'');
   }
 }

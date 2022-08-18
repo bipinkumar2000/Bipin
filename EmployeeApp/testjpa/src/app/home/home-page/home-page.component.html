@@ -1,5 +1,3 @@
-
-
 <div class="main">
     <h2 class="header">
         <p>Welcome to Employee Management System</p>
@@ -20,38 +18,60 @@
     <table mat-table [dataSource]="EmployeedataSource" class="mat-elevation-z8">
       
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <th mat-header-cell *matHeaderCellDef>Name</th>
             <td mat-cell *matCellDef="let data"> {{data.name}} </td>
         </ng-container>
 
-        
         <ng-container matColumnDef="salary">
-            <th mat-header-cell *matHeaderCellDef> Salary </th>
+            <th mat-header-cell *matHeaderCellDef>Salary</th>
             <td mat-cell *matCellDef="let data"> {{data.salary}} </td>
         </ng-container>
 
        
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef>Action</th>
-            <td mat-cell *matCellDef="">
-                <button  (click)="open(content)"> Edit </button>
-                <button  (click)="open(content)"> Delete </button>
-            </td>
-            
+            <td mat-cell *matCellDef="let data">
+                <button class="edit" (click)="open(update)"> Edit </button>
+                <button class="delete" (click)="deleteEmployeeData(data.id)"> Delete </button>
+            </td>        
+        </ng-container>
+        <ng-container matColumnDef="NoData">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-footer-cell *matFooterCellDef colspan="6">No Data!</td>
+        </ng-container>
+        <ng-container matColumnDef="loading">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-footer-cell *matFooterCellDef colspan="6">Loading . . .</td>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        <mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':EmployeedataSource!=null}"> </mat-footer-row>
+        <mat-footer-row *matFooterRowDef="['NoData']" [ngClass]="{'hide':!(EmployeedataSource!=null && EmployeedataSource.data.length==0)}"></mat-footer-row>
+
     </table>
 </div>
 
 <ng-template #content let-modal>
+    <div class="header-content">Add New Employee</div>
     <div class="body">
         <label><span>Name</span></label>
         <input type="text" [(ngModel)]="Employee.name"><br><br>
         <label><span>Salary</span></label>
         <input  type="text" [(ngModel)]="Employee.salary"><br><br>
         <button id="submit" class="submit" (click)="addEmployee()">Add</button>
+        <button id="close" class="close" (click)="close()">close</button>
+    </div>
+</ng-template>
+<ng-template #update let-modal>
+    <div class="header-content">Update Employee Data</div>
+    <div class="body">
+        <label><span>Name</span></label>
+        <input type="text" [(ngModel)]="Employee.name"><br><br>
+        <label><span>Salary</span></label>
+        <input  type="text" [(ngModel)]="Employee.salary"><br><br>
+        <button id="submit" class="submit" (click)="addEmployee()">Update</button>
         <button id="close" class="close" (click)="close()">close</button>
     </div>
 </ng-template>

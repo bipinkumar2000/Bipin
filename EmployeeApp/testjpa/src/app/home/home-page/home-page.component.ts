@@ -1,9 +1,10 @@
 import { Component, OnInit ,Input, Output,EventEmitter} from '@angular/core';
 import { HomeServiceService } from '../home-service.service';
 import { Employee } from 'src/app/Models/Employee';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbAlert, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
+import { HtmlParser } from '@angular/compiler';
 
 
 @Component({
@@ -31,18 +32,23 @@ export class HomePageComponent implements OnInit {
 
   getEmployeesData(){
     this.homeservice.getEmployeesData().subscribe(data=>{
-      console.log(data);
+      // console.log(data);
       this.EmployeedataSource=new MatTableDataSource<any>(data);
-      this.EmployeeList=data;
     })
   }
 
   addEmployee(){
-    console.log(this.Employee);
+    // console.log(this.Employee);
     this.homeservice.postEmployeeData(this.Employee).subscribe(data=>{
-      console.log(data);
-      this.getEmployeesData();
-      alert("succcessfully added Employee");
+      // console.log(data);
+      if(data==true){
+        this.getEmployeesData();
+         this.close();
+        alert("succcessfully added Employee");
+      }
+      else{
+        alert("Failed to added Employee");
+      }
     });
      
   }
@@ -50,9 +56,21 @@ export class HomePageComponent implements OnInit {
   close(){
     this.modalService.dismissAll();
   }
+
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
+    this.modalService.open(content);
+  }
+  
+  deleteEmployeeData(id:number){
+    
+    this.homeservice.deleteEmployeeData(id).subscribe(data=>{
+      if(data==true){
+        alert("successfully deleted data");
+      }
+      else{
+        alert("Error couldnt delete the data");
+      }
+      this.getEmployeesData();
     });
   }
 }
